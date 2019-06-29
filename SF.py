@@ -25,7 +25,7 @@ def SF():
     ]
 
     # Loop through each topic, get url of each article then get its content
-    with open('SF2.txt', 'w') as f:
+    with open('SF.txt', 'w') as f:
 
         # use tab line as a delimiter
         f.write('Topic \t Article \t Article_link \t Content \n')
