@@ -18,7 +18,7 @@ def sf():
             'AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Safari/605.1.15'
     }
 
-    # This part is to deal with exception: connection error-max retries exceeded
+    # This part is to deal with the exception: connection error-max retries exceeded
     # https://stackoverflow.com/questions/23013220/max-retries-exceeded-with-url-in-requests
     session = requests.Session()
     retry = requests.packages.urllib3.util.retry.Retry(connect=3, backoff_factor=0.2)
