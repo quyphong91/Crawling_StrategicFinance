@@ -2,8 +2,6 @@
 
 
 import requests
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
 from bs4 import BeautifulSoup as bs
 import time
 import csv
@@ -23,8 +21,8 @@ def sf():
     # This part is to deal with exception: connection error-max retries exceeded
     # https://stackoverflow.com/questions/23013220/max-retries-exceeded-with-url-in-requests
     session = requests.Session()
-    retry = Retry(connect=3, backoff_factor=0.2)
-    adapter = HTTPAdapter(max_retries=retry)
+    retry = requests.packages.urllib3.util.retry.Retry(connect=3, backoff_factor=0.2)
+    adapter = requests.adapters.HTTPAdapter(max_retries=retry)
     session.mount('http://', adapter)
     session.mount('https://', adapter)
     response = session.get(homepage, headers=headers, timeout=None)
